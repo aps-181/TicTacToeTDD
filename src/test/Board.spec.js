@@ -1,5 +1,7 @@
 import { fireEvent, render,screen } from "@testing-library/react"
-import Board from "./Board"
+import Board from "../components/Board"
+
+describe('<Board/>',() => {
 
 describe("rendering of board",() => {
 
@@ -38,8 +40,8 @@ describe('testing board functionality',() => {
         const firstSquare = screen.getByTestId('square_0')
         const secondSquare = screen.getByTestId('square_1')
 
-        fireEvent.click(firstSquare) //X
-        fireEvent.click(secondSquare) //O
+        fireEvent.click(firstSquare) 
+        fireEvent.click(secondSquare) 
 
 
         expect(firstSquare.innerHTML).toBe('X')
@@ -54,9 +56,9 @@ describe('testing board functionality',() => {
         const firstSquare = screen.getByTestId('square_0')
         const secondSquare = screen.getByTestId('square_1')
 
-        fireEvent.click(firstSquare) //X
-        fireEvent.click(secondSquare) //O
-        fireEvent.click(secondSquare) //X
+        fireEvent.click(firstSquare) 
+        fireEvent.click(secondSquare) 
+        fireEvent.click(secondSquare) 
 
         expect(secondSquare.innerHTML).toBe('O')
 
@@ -71,11 +73,11 @@ describe('testing board functionality',() => {
         const fourthSquare = screen.getByTestId('square_3')
         const fifthSquare = screen.getByTestId('square_4')
 
-        fireEvent.click(firstSquare)  //X
-        fireEvent.click(fourthSquare) //O
-        fireEvent.click(secondSquare) //X
-        fireEvent.click(fifthSquare) //O
-        fireEvent.click(thirdSquare) //X
+        fireEvent.click(firstSquare)  
+        fireEvent.click(fourthSquare) 
+        fireEvent.click(secondSquare) 
+        fireEvent.click(fifthSquare) 
+        fireEvent.click(thirdSquare) 
 
         expect(screen.getByTestId('game-status').innerHTML).toBe('Winner: X')
     })
@@ -91,12 +93,12 @@ describe('testing board functionality',() => {
         const fifthSquare = screen.getByTestId('square_4')
         const seventhSquare = screen.getByTestId('square_6')
 
-        fireEvent.click(secondSquare) //X
-        fireEvent.click(firstSquare) //O
-        fireEvent.click(thirdSquare) //X
-        fireEvent.click(fourthSquare) //O
-        fireEvent.click(fifthSquare) //X
-        fireEvent.click(seventhSquare) //O
+        fireEvent.click(secondSquare) 
+        fireEvent.click(firstSquare) 
+        fireEvent.click(thirdSquare) 
+        fireEvent.click(fourthSquare) 
+        fireEvent.click(fifthSquare) 
+        fireEvent.click(seventhSquare) 
 
         
         
@@ -113,11 +115,11 @@ describe('testing board functionality',() => {
         const fifthSquare = screen.getByTestId('square_4')
         const ninthSquare = screen.getByTestId('square_8')
         
-        fireEvent.click(firstSquare) //X
-        fireEvent.click(secondSquare) //O
-        fireEvent.click(fifthSquare) //X
-        fireEvent.click(thirdSquare) //O
-        fireEvent.click(ninthSquare) //X
+        fireEvent.click(firstSquare) 
+        fireEvent.click(secondSquare) 
+        fireEvent.click(fifthSquare) 
+        fireEvent.click(thirdSquare) 
+        fireEvent.click(ninthSquare) 
 
         expect(screen.getByTestId('game-status').innerHTML).toBe('Winner: X')
     })
@@ -132,17 +134,18 @@ describe('testing board functionality',() => {
         const ninthSquare = screen.getByTestId('square_8')
         const sixthSquare = screen.getByTestId('square_5')
 
-        fireEvent.click(firstSquare) //X
-        fireEvent.click(secondSquare) //O
-        fireEvent.click(fifthSquare) //X
-        fireEvent.click(thirdSquare) //O
-        fireEvent.click(ninthSquare) //X
+        fireEvent.click(firstSquare) 
+        fireEvent.click(secondSquare)
+        fireEvent.click(fifthSquare) 
+        fireEvent.click(thirdSquare) 
+        fireEvent.click(ninthSquare) 
  
-        fireEvent.click(sixthSquare) //O
+        fireEvent.click(sixthSquare) 
 
         expect(screen.getByTestId('game-status').innerHTML).toBe('Winner: X')
 
         expect(sixthSquare.innerHTML).toBe('')
     })
 
+})
 })

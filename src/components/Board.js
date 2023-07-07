@@ -1,13 +1,36 @@
 import { useState } from "react";
-import Square from "../square/Square";
+import Square from "./Square";
 
 
 
 
-export default function Board(){
+const Board = () =>{
 
      const [squares,setSquares] = useState(Array(9).fill(null))
      const [xIsNext, setXIsNext] = useState(true)
+
+     const calculateWinner = (squares) => {
+      const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8]
+      ]
+  
+      for (let winningCombination of winningCombinations) {
+        const [a, b, c] = winningCombination
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+          return squares[a]
+        }
+  
+      }
+
+      return null
+    }
 
      const winner = calculateWinner(squares)
      let status
@@ -18,7 +41,7 @@ export default function Board(){
      }
 
 
-     function handleClick(i){
+     const handleClick = (i) => {
 
           if(squares[i] || calculateWinner(squares)) return;
 
@@ -49,26 +72,7 @@ export default function Board(){
           </>
      )
      
-     function calculateWinner(squares) {
-          const winningCombinations = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 4, 8],
-            [2, 4, 6],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8]
-          ]
-      
-          for (let winningCombination of winningCombinations) {
-            const [a, b, c] = winningCombination
-            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-              return squares[a]
-            }
-      
-          }
-
-          return null
-        }
+     
 }
+
+export default Board

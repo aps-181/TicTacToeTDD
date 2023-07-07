@@ -1,7 +1,8 @@
 import React from "react";
 import {render,screen} from '@testing-library/react'
-import Square from "./Square"
+import Square from "../components/Square"
 
+describe('<Square/>',() => {
 describe("Rendering of square component",() => {
 
     it('should render sqaure componenet',() => {
@@ -10,4 +11,6 @@ describe("Rendering of square component",() => {
           expect(button).toBeInTheDocument()
     })
 
+   })
 })
+
